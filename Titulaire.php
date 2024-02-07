@@ -62,7 +62,7 @@ class Titulaire {
                 $this->comptes = $comptes;
                 return $this;
     }
-// ajouter des comptes dans mon tableau 
+// ajouter des comptes dans mon tableau  
 public function addCompte(Compte $compte){
     $this->comptes[] = $compte;
 }

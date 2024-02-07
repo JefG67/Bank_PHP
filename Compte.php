@@ -71,9 +71,9 @@ class Compte{
     }    
 
     //methode pour faire un virement
-    public function Virement($montantTransfert, $compteCible ){
+    public function Virement(float $montantTransfert, $compteCible ){
         if ($montantTransfert > 0 && $montantTransfert <= $this ->solde){
-            $this->solde-> Debiter($montantTransfert);
+            $this-> Debiter($montantTransfert);
             $compteCible-> Crediter($montantTransfert);
             echo "le transfert est effectué";
         }
