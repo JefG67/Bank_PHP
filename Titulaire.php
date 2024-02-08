@@ -39,7 +39,7 @@ class Titulaire {
     }
 
     public function getDateDeNaissance(){
-                return $this->dateDeNaissance;
+                return $this->dateDeNaissance ;
     }
 
     public function setDateDeNaissance(DateTime $dateDeNaissance){
@@ -62,16 +62,39 @@ class Titulaire {
                 $this->comptes = $comptes;
                 return $this;
     }
-// ajouter des comptes dans mon tableau  
-public function addCompte(Compte $compte){
-    $this->comptes[] = $compte;
-}
+    // ajouter des comptes dans mon tableau  
+    public function addCompte(Compte $compte){
+        $this->comptes[] = $compte;
+    }
 
 
-public function age(){
+    public function calculAge(){
 
-    $aujourdhui = new DateTime();
-    $age = $this->dateDeNaissance->diff($aujourdhui);
+     $aujourdhui = new DateTime();
+     $age = $this->dateDeNaissance->diff($aujourdhui);
         echo $age->format('%y');
+    }
+ 
+
+    
+
+    public function afficherInfo(){
+
+        $result = $this;
+            foreach ($this->comptes as $compte){
+                $result = $result . $compte;
+            }
+          
+      
+            // $result = "";
+            // foreach ($this->comptes as $compte) {
+            //     $result .= $compte . ", ";
+            // }
+    
+        return "L'utilisateur $this->noms, $this->prenoms née le ". $this->dateDeNaissance->format('d/m/Y') . ", âgé de ".$this->calculAge()." ans, réside à $this->ville possède les comptes suivants: " . $result;
+        
+
+
+
+    }
 }
- }
