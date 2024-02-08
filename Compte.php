@@ -83,6 +83,11 @@ class Compte{
 
     
     }
-
-
+  
+    public function toString()
+    {
+     return $this->libelle . " " .$this->solde . " " .$this->devise ;
+    }
+ 
+ 
 }
