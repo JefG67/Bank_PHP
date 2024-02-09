@@ -12,4 +12,4 @@ $compte2 = new Compte("Livret b", 60,"€",$titulaire1);
 
 
 // echo $compte1->Virement(40,$compte2);
-echo $titulaire1 -> afficherInfo();
+$titulaire1->afficherInfo();

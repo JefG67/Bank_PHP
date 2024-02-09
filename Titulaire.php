@@ -42,6 +42,10 @@ class Titulaire {
                 return $this->dateDeNaissance ;
     }
 
+    public function getDateDeNaissanceFormatted(){
+                return $this->dateDeNaissance->format('d/m/Y');
+    }
+
     public function setDateDeNaissance(DateTime $dateDeNaissance){
                 $this->dateDeNaissance = $dateDeNaissance;
                 return $this;
@@ -70,9 +74,15 @@ class Titulaire {
 
     public function calculAge(){
 
-     $aujourdhui = new DateTime();
-     $age = $this->dateDeNaissance->diff($aujourdhui);
-        echo $age->format('%y');
+        $aujourdhui = new DateTime();
+        $age = $this->dateDeNaissance->diff($aujourdhui);
+        return $age->format('%y');
+    }
+  
+    // __toString doit renvoyer un string qui représente l'objet sous forme de string
+    public function __toString()
+    {
+      return "$this->prenoms $this->noms";
     }
  
 
@@ -80,18 +90,21 @@ class Titulaire {
 
     public function afficherInfo(){
 
-        $result = $this;
+        $result = "<ul>";
             foreach ($this->comptes as $compte){
-                $result = $result . $compte;
+                // $result = $result . $compte;
+                $result .= "<li>$compte</li>"; // a = a . b   <=>   a .= b
             }
+            $result .= "</ul>";
           
+            
       
             // $result = "";
             // foreach ($this->comptes as $compte) {
-            //     $result .= $compte . ", ";
+            //     $result .= $compte . ", "; // "compte1, compte2, "
             // }
     
-        return "L'utilisateur $this->noms, $this->prenoms née le ". $this->dateDeNaissance->format('d/m/Y') . ", âgé de ".$this->calculAge()." ans, réside à $this->ville possède les comptes suivants: " . $result;
+        echo "<p>L'utilisateur $this née le ". $this->getDateDeNaissanceFormatted() . ", âgé de ".$this->calculAge()." ans, réside à $this->ville et possède les comptes suivants: </p>" . $result;
         
 
 

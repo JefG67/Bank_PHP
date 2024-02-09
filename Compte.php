@@ -13,7 +13,7 @@ class Compte{
         $this->solde = $solde;
         $this->devise = $devise;
         $this->titulaire = $titulaire;
-
+        $this->titulaire->addCompte($this); // on notifie notre Titulaire qu'on est lié à lui (qu'il nous ajoute à son tableau de comptes)
     }   
      
     
@@ -84,9 +84,10 @@ class Compte{
     
     }
   
-    public function toString()
+    // __toString doit renvoyer un string qui représente l'objet sous forme de string
+    public function __toString()
     {
-     return $this->libelle . " " .$this->solde . " " .$this->devise ;
+      return "Libellé : " . $this->libelle . "Solde : " . $this->solde . " devise " . $this->devise;
     }
  
  
